@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Última Chance - Oferta Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-extra.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .upsell-container {
+            width: 100%;
+            max-width: 600px;
+            background: #111;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(234, 179, 8, 0.15);
+            /* Amarelo para mudar o tom */
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .alert-box {
+            background: #fefce8;
+            color: #ca8a04;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 2px solid #ca8a04;
+        }
+
+        .upsell-headline {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #fbbf24;
+        }
+
+        .video-wrapper {
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-section {
+            margin-top: 30px;
+            display: none;
+            /* COMEÇA OCULTO */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .btn-yellow {
+            background: linear-gradient(to bottom, #fbbf24, #d97706);
+            color: white;
+            padding: 20px 15px;
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #b45309;
+            transition: transform 0.1s;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yellow:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .no-thanks {
+            display: block;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .no-thanks:hover {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="upsell-container">
+
+        <div class="alert-box">
+            ✋ ESPERE! ÚLTIMA TENTATIVA...
+        </div>
+
+        <h1 class="upsell-headline">
+            Eu entendo que você está em dúvida... <br>
+            <span class="highlight">Mas não quero que o preço seja um problema.</span>
+        </h1>
+
+        <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 20px;">
+            Veja este recado rápido que gravei para você:
+        </p>
+
+        <!-- VÍDEO DOWNSELL (VTurb) -->
+        <div class="video-wrapper">
+            <vturb-smartplayer id="vid-69686ec03565f9f404c8b6ff"
+                style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>
+            <script
+                type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69686ec03565f9f404c8b6ff/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
+        </div>
+
+        <!-- DELAY DE 30 SEGUNDOS -->
+        <div class="cta-section" id="cta-box">
+            <div style="margin-bottom: 20px;">
+                <span style="text-decoration: line-through; color: #666; font-size: 1.2rem;">De R$ 45,90</span>
+                <br>
+                <span style="color: #fbbf24; font-size: 2rem; font-weight: 800;">Por 5x de R$ 5,95</span>
+                <br>
+                <span style="color: #888; font-size: 0.9rem;">(ou R$ 27,45 à vista)</span>
+            </div>
+
+            <a href="#" class="btn-yellow">
+                SIM! QUERO APROVEITAR O DESCONTO
+            </a>
+
+            <a href="obrigado.html" class="no-thanks">
+                Não obrigado, vou ficar sem esse complemento.
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // Script de Delay Downsell (30 segundos)
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Downsell: Iniciando delay de 30s...");
+            setTimeout(function () {
+                const cta = document.getElementById('cta-box');
+                if (cta) {
+                    cta.style.display = 'block';
+                    setTimeout(() => cta.style.opacity = '1', 100);
+                    console.log("Downsell: Botão visível!");
+                }
+            }, 30000); // 30.000 ms = 30 segundos
+        });
+    </script>
+</body>
+
+</html>

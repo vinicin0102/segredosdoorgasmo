@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial - Não Feche!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-extra.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .upsell-container {
+            width: 100%;
+            max-width: 600px;
+            background: #111;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.15);
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .alert-box {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 2px solid #dc2626;
+            animation: pulse 2s infinite;
+        }
+
+        .upsell-headline {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ef4444;
+        }
+
+        .video-wrapper {
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-section {
+            margin-top: 30px;
+            display: none;
+            /* COMEÇA OCULTO */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .btn-green {
+            background: linear-gradient(to bottom, #22c55e, #16a34a);
+            color: white;
+            padding: 20px 15px;
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #15803d;
+            transition: transform 0.1s;
+        }
+
+        .btn-green:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .no-thanks {
+            display: block;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .no-thanks:hover {
+            color: #999;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="upsell-container">
+
+        <div class="alert-box">
+            ⚠️ Atenção: Não feche essa página!
+        </div>
+
+        <h1 class="upsell-headline">
+            ESPERE! Seu pedido <span class="highlight">não está completo...</span>
+        </h1>
+
+        <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 20px;">
+            Tenho uma oportunidade única e exclusiva para você que acabou de se inscrever.
+        </p>
+
+        <!-- VÍDEO UPSELL (VTurb) -->
+        <div class="video-wrapper">
+            <vturb-smartplayer id="vid-69628eb8da723d6f8687e633"
+                style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>
+            <script
+                type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69628eb8da723d6f8687e633/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
+        </div>
+
+        <!-- DELAY DE 30 SEGUNDOS -->
+        <div class="cta-section" id="cta-box">
+            <a href="#" class="btn-green">
+                SIM! ADICIONAR POR 9x R$ 5,88 <br>
+                <span style="font-size: 0.9rem; font-weight: normal; text-transform: none;">(Ou R$ 45,90 à vista)</span>
+            </a>
+
+            <a href="downsell.html" class="no-thanks">
+                Não, obrigado. Não quero essa oportunidade agora.
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // Script de Delay Upsell (30 segundos)
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Upsell: Iniciando delay de 30s...");
+            setTimeout(function () {
+                const cta = document.getElementById('cta-box');
+                if (cta) {
+                    cta.style.display = 'block';
+                    setTimeout(() => cta.style.opacity = '1', 100);
+                    console.log("Upsell: Botão visível!");
+                }
+            }, 30000); // 30.000 ms = 30 segundos
+        });
+    </script>
+</body>
+
+</html>
