@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE DE DELAY DA OFERTA</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box {
+            border: 1px solid #333;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .btn {
+            background: #dc2626;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>MODO DE TESTE</h1>
+        <p>A oferta abaixo deve aparecer em exatos <strong>5 SEGUNDOS</strong>.</p>
+
+        <!-- VSL VIDEO CONTAINER (VTurb) -->
+        <div class="video-container" style="margin: 20px 0; max-width: 100%;">
+            <vturb-smartplayer id="vid-69761053d186076a68574eb1"
+                style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>
+            <script
+                type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69761053d186076a68574eb1/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
+        </div>
+
+        <hr style="border-color: #333; margin: 20px 0;">
+
+        <!-- OFERTA (Inicia Oculta) -->
+        <div id="offer-content" style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
+            <h2>🎉 A OFERTA APARECEU!</h2>
+            <p>Se você está vendo isso, o código de delay funciona perfeitamente.</p>
+            <br>
+            <div class="price-container">
+                <span style="display:block; text-decoration: line-through; color: #888;">De R$ 197,00</span>
+                <span style="display:block; font-size: 1.5rem; color: #4ade80; font-weight: bold;">Por R$ 69,90</span>
+                <span style="display:block; color: #ccc;">ou 10x de R$ 6,90</span>
+            </div>
+            <br>
+            <a href="#" class="btn">COMPRAR AGORA</a>
+        </div>
+
+        <div id="status" style="margin-top: 20px; color: yellow;">Aguardando 5 segundos...</div>
+    </div>
+
+    <script>
+        // Lógica de Delay (Simulada em 5s)
+        document.addEventListener('DOMContentLoaded', function () {
+            const offerContent = document.getElementById('offer-content');
+            const status = document.getElementById('status');
+
+            console.log("Iniciando timer de teste (5s)...");
+
+            let counter = 5;
+            const interval = setInterval(() => {
+                counter--;
+                if (counter > 0) status.textContent = `Aguardando ${counter} segundos...`;
+                else {
+                    clearInterval(interval);
+                    status.textContent = "Timer finalizado!";
+                    status.style.color = "#4ade80";
+                }
+            }, 1000);
+
+            setTimeout(() => {
+                console.log("Mostrando oferta!");
+                offerContent.style.display = 'block';
+                setTimeout(() => { offerContent.style.opacity = '1'; }, 100);
+            }, 5000); // 5 SEGUNDOS
+        });
+    </script>
+</body>
+
+</html>

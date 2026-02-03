@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALIDAÇÃO VISUAL DA OFERTA</title>
+    <!-- Importando CSS do Projeto para garantir fidelidade -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-extra.css">
+    <style>
+        /* CSS Inline do Style Extra se não carregar */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .screen-content {
+            background: #111;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .btn-red {
+            background: linear-gradient(to bottom, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+        <div class="screen-content">
+            <h1>PREVIEW DA OFERTA</h1>
+            <p style="color: yellow; text-align: center; margin-bottom: 20px;">Esta é a aparência exata da oferta quando
+                o timer de 8m53s disparar:</p>
+
+            <hr style="border-color: #333; margin: 20px 0;">
+
+            <!-- ============================================ -->
+            <!-- CÓDIGO DA OFERTA REAL ABAIXO -->
+            <!-- ============================================ -->
+
+            <div id="offer-content" style="display: block; opacity: 1; margin-top: 30px;">
+
+                <!-- Texto de Vendas -->
+                <p class="result-text" style="font-size: 1.1rem; margin-bottom: 25px; text-align: center;">
+                    A boa notícia é que você pode mudar isso HOJE. Com essas técnicas, você vai aprender a fazer
+                    qualquer mulher gozar de verdade em poucos minutos.
+                </p>
+
+                <!-- Box de Preço Destacado -->
+                <div class="price-box"
+                    style="background: rgba(220, 38, 38, 0.1); border: 2px solid #dc2626; border-radius: 15px; padding: 25px; margin-bottom: 25px; text-align: center;">
+                    <span class="old-price"
+                        style="display: block; text-decoration: line-through; color: #aaa; font-size: 1rem;">De R$
+                        197,00</span>
+                    <span class="new-price"
+                        style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); margin: 5px 0;">R$
+                        69,90</span>
+                    <span class="installments"
+                        style="display: block; color: #fbbf24; font-weight: 600; font-size: 1.1rem;">ou 10x de R$
+                        6,90</span>
+                </div>
+
+                <!-- Botão CTA -->
+                <a href="https://seu-link-de-checkout.com" class="btn-red btn-cta pulse" id="ctaButton"
+                    style="width: 100%; display: block; padding: 20px 10px; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; text-align: center;">
+                    SIM! QUERO DOMINAR O SQUIRT 🔥
+                </a>
+
+                <div class="guarantee-box"
+                    style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+                    <span class="guarantee-icon" style="font-size: 1.5rem;">🛡️</span>
+                    <span class="guarantee-text" style="color: #ccc;">Garantia de 30 Dias</span>
+                </div>
+
+                <!-- Urgência -->
+                <div class="urgency-bar" style="margin-top: 15px; text-align: center; color: #ef4444;">
+                    <span class="urgency-icon">⏰</span>
+                    <span class="urgency-text">Oferta expira em <span id="countdown">14:59</span></span>
+                </div>
+
+                <!-- Bônus -->
+                <div class="bonus-section"
+                    style="margin-top: 40px; text-align: left; background: #1a1a1a; padding: 20px; border-radius: 10px;">
+                    <h3 class="bonus-title" style="color: #fbbf24; text-align: center; margin-bottom: 20px;">🎁 LEVE 3
+                        BÔNUS GRÁTIS</h3>
+                    <div class="bonus-list">
+                        <div class="bonus-item"
+                            style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span class="bonus-check">✅</span>
+                            <span class="bonus-name">Bônus 1: Guia do Anal Sem Dor (R$ 47,00)</span>
+                        </div>
+                        <div class="bonus-item"
+                            style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span class="bonus-check">✅</span>
+                            <span class="bonus-name">Bônus 2: A Mente Feminina Revelada (R$ 37,00)</span>
+                        </div>
+                        <div class="bonus-item" style="display: flex; align-items: center; gap: 10px;">
+                            <span class="bonus-check">✅</span>
+                            <span class="bonus-name">Bônus 3: Mensagens Hipnóticas (R$ 27,00)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="secure-text" style="margin-top: 20px; font-size: 0.8rem; color: #666; text-align: center;">🔒
+                    Pagamento 100% seguro e discreto</p>
+            </div>
+
+            <!-- ============================================ -->
+        </div>
+    </div>
+</body>
+
+</html>

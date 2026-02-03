@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz - Segredos do Orgasmo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-extra.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Partículas de fundo -->
+        <div class="particles">
+            <span class="particle">✦</span>
+            <span class="particle">✦</span>
+            <span class="particle">✦</span>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quizContainer">
+
+            <!-- ============================================ -->
+            <!-- TELA 0: VERIFICAÇÃO DE IDADE 18+ -->
+            <!-- ============================================ -->
+            <div class="quiz-screen active" id="screen-age">
+                <div class="screen-content age-verification">
+                    <!-- EDITAR: Substitua pela sua imagem de lábios -->
+                    <div class="lips-image">
+                        <img src="images/lips.png" alt="18+" onerror="this.parentElement.innerHTML='👄'">
+                    </div>
+
+                    <div class="age-badge">
+                        <span class="age-text">Conteúdo</span>
+                        <span class="age-number">18+</span>
+                    </div>
+
+                    <h1 class="age-title">Você deve ter <span class="highlight-red">18 anos</span> ou mais para
+                        continuar!</h1>
+
+                    <button class="btn-red" onclick="confirmAge()">
+                        TENHO 18 ANOS OU MAIS!
+                    </button>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 1: PERGUNTA INICIAL -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-1">
+                <div class="screen-content">
+                    <span class="question-prefix">Perfeito!</span>
+                    <h2 class="question-title">Você se considera um homem bom de cama?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 1)">
+                            Sim, totalmente 😼
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 1)">
+                            Mais ou menos 😵
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 1)">
+                            Não tenho tanta certeza 🤷
+                        </button>
+                    </div>
+
+                    <!-- EDITAR: Adicione sua imagem aqui -->
+                    <div class="question-image">
+                        <img src="images/img-cowgirl.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA EXTRA: O QUE FALTA -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-new">
+                <div class="screen-content">
+                    <h2 class="question-title">O que falta para você se tornar esse homem?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 'new')">
+                            Aprender novas Técnicas
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 'new')">
+                            Mais confiança na cama
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 'new')">
+                            Experiência Prática
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/img-neck.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 2: OBJETIVO PRINCIPAL (COM CARDS) -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-2">
+                <div class="screen-content">
+                    <h2 class="question-title-red">Qual é o seu Principal Objetivo aqui?<br>😈</h2>
+                    <p class="question-subtitle">Você vai aprender tudo na Prática com vídeos Explícitos!</p>
+
+                    <div class="cards-grid">
+                        <!-- EDITAR: Substitua as imagens dos cards -->
+                        <button class="card-option" onclick="selectOption(this, 2)">
+                            <div class="card-image">
+                                <img src="images/card-1.jpg" alt="">
+                            </div>
+                            <span class="card-text">Aprender as 23 Técnicas Orgásmicas</span>
+                        </button>
+
+                        <button class="card-option" onclick="selectOption(this, 2)">
+                            <div class="card-image">
+                                <img src="images/card-2.jpg" alt="">
+                            </div>
+                            <span class="card-text">Fazer qualquer Mulher ter um Squirt (Jorrar)</span>
+                        </button>
+
+                        <button class="card-option" onclick="selectOption(this, 2)">
+                            <div class="card-image">
+                                <img src="images/card-3.jpg" alt="">
+                            </div>
+                            <span class="card-text">Ser um Homem Bom de Cama 🤤</span>
+                        </button>
+
+                        <button class="card-option" onclick="selectOption(this, 2)">
+                            <div class="card-image">
+                                <img src="images/card-4.jpg" alt="">
+                            </div>
+                            <span class="card-text">Proporcionar Múltiplos Orgasmos 💦</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 3: FREQUÊNCIA DE ORGASMO -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-3">
+                <div class="screen-content">
+                    <span class="question-prefix">Entendi...</span>
+                    <h2 class="question-title">Com que frequência ela tem orgasmo com você?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 3)">
+                            Raramente ou nunca 😢
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 3)">
+                            Às vezes, mas não tenho certeza 🤔
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 3)">
+                            Na maioria das vezes 😊
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 3)">
+                            Sempre, mas quero melhorar 🔥
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/card-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 4: PONTO G -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-4">
+                <div class="screen-content">
+                    <span class="question-prefix">Hmm... 🤔</span>
+                    <h2 class="question-title">Você sabe localizar o ponto G dela?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 4)">
+                            Não sei nem o que é isso ❓
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 4)">
+                            Já ouvi falar, mas nunca encontrei 🤷
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 4)">
+                            Acho que sei, mas não tenho certeza 👍
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 4)">
+                            Sim, sei perfeitamente 💯
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/img-fingers.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 5: ORAL -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-5">
+                <div class="screen-content">
+                    <span class="question-prefix">E sobre o oral... 👅</span>
+                    <h2 class="question-title">Como você avalia suas habilidades no oral?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 5)">
+                            Não faço ideia do que estou fazendo 😬
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 5)">
+                            Faço, mas ela não curte muito 😐
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 5)">
+                            Ela gosta, mas sei que posso melhorar 🙂
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 5)">
+                            Ela adora, mas quero técnicas avançadas 😏
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/card-4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 6: FORMATO DO PÊNIS -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-6">
+                <div class="screen-content">
+                    <span class="question-prefix">Importante! 🎯</span>
+                    <h2 class="question-title">Qual o formato do seu pênis?</h2>
+                    <p class="question-subtitle">Isso é importante para indicar as melhores posições para você</p>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 6)">
+                            Curvado para cima ↗️
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 6)">
+                            Curvado para baixo ↘️
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 6)">
+                            Curvado para o lado ↔️
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 6)">
+                            Reto ⬆️
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/card-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA 7: MAIOR DESEJO -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-7">
+                <div class="screen-content">
+                    <span class="question-prefix">Última pergunta! 🔥</span>
+                    <h2 class="question-title">O que você mais deseja conquistar?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 7)">
+                            Fazer ela esguichar de prazer 💦
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 7)">
+                            Ela me procurar pra transar toda noite 🔥
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 7)">
+                            Ela liberar todas as fantasias comigo 😈
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 7)">
+                            Ser o MELHOR que ela já teve 👑
+                        </button>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/card-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ============================================ -->
+            <!-- TELAS DE SQUIRT (SEQUÊNCIA) -->
+            <!-- ============================================ -->
+
+            <!-- S1: Já ouviu falar -->
+            <div class="quiz-screen" id="screen-s1">
+                <div class="screen-content">
+                    <h2 class="question-title">Você já ouviu falar do Squirt Feminino?</h2>
+
+                    <div class="question-image">
+                        <div class="video-container"
+                            style="border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
+                            <video id="video-intro" width="100%" autoplay loop muted playsinline
+                                style="display: block;">
+                                <source src="images/video-intro.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 's1')">
+                            Sim, conheço bem 😉
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 's1')">
+                            Não nunca ouvi falar 🤔
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S2: O que é (Info) -->
+            <div class="quiz-screen" id="screen-s2">
+                <div class="screen-content">
+                    <h2 class="question-title">O que é o Squirt?</h2>
+
+                    <div class="info-box">
+                        <p><strong>O Squirt Feminino</strong>, também conhecido como "ejaculação feminina", é uma
+                            resposta sexual intensa em que algumas mulheres expulsam um líquido claro através da uretra
+                            durante o orgasmo ou uma excitação muito forte.</p>
+                        <p>Isso acontece quando a mulher é estimulada de maneira adequada, especialmente na região do
+                            Ponto G, levando ela a alcançar esse nível elevado de prazer. Nem todas as mulheres já
+                            experimentaram isso, e muitos homens não sabem como provocar isso, mas com as técnicas
+                            certas, qualquer mulher pode conseguir!</p>
+                    </div>
+
+                    <div class="question-image">
+                        <img src="images/squirt-info.png" alt="">
+                    </div>
+
+                    <button class="btn-red pulse" onclick="nextQuestion('s2')" style="margin-top: 20px;">
+                        ENTENDI, QUERO CONTINUAR
+                    </button>
+                </div>
+            </div>
+
+            <!-- S3: Como fazer -->
+            <div class="quiz-screen" id="screen-s3">
+                <div class="screen-content">
+                    <div class="question-image" style="margin-top: 0; margin-bottom: 20px;">
+                        <img src="images/squirt-explicit.png" alt="">
+                    </div>
+
+                    <h2 class="question-title">Você já se perguntou como fazer uma mulher alcançar esse nível de Prazer?
+                    </h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 's3')">
+                            Sim, e quero descobrir como fazer isso
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 's3')">
+                            Sim, mas não sei por onde começar
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 's3')">
+                            Não, mas agora me interessei muito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO: Passo a Passo -->
+            <div class="quiz-screen" id="screen-video">
+                <div class="screen-content">
+                    <!-- Título Imagem -->
+                    <div class="question-image" style="margin-bottom: 15px;">
+                        <img src="images/txt-video-title.png" alt="Veja o passo a passo">
+                    </div>
+
+                    <!-- Vídeo Nativo -->
+                    <div class="video-container"
+                        style="margin-bottom: 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);">
+                        <video id="quiz-video" width="100%" controls playsinline poster="images/squirt-explicit.png"
+                            style="display: block;">
+                            <source src="images/video-squirt.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+
+                    <!-- Pergunta Texto -->
+                    <h2 class="question-title" style="color: #dc2626; margin-bottom: 20px;">O que você achou?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 'video')">
+                            Muito bom 🤤
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 'video')">
+                            Vou aplicar hoje mesmo 😈
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S4: Acredita -->
+            <div class="quiz-screen" id="screen-s4">
+                <div class="screen-content">
+                    <h2 class="question-title">Você acredita que dominar essas Técnicas é o que faltava para
+                        proporcionar esse tipo de Prazer?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 's4')">
+                            Sim, com certeza ✅
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 's4')">
+                            Não tenho certeza, mas estou disposto a aprender 😌
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S5: Mudança de vida -->
+            <div class="quiz-screen" id="screen-s5">
+                <div class="screen-content">
+                    <h2 class="question-title">Se você tivesse o conhecimento e as Técnicas necessárias para fazer
+                        qualquer Mulher ter um Squirt, como mudaria a sua vida Sexual?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 's5')">
+                            Seria incrível 😍
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 's5')">
+                            Seria muito interessante 😉
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- NOVA SEQUÊNCIA: PROVA SOCIAL -->
+            <!-- ============================================ -->
+
+            <!-- STATS: Estatística 1/10 -->
+            <div class="quiz-screen" id="screen-stats">
+                <div class="screen-content">
+                    <h2 class="question-title">Os estudos afirmam que apenas 1 a cada 10 mulheres consegue alcançar esse
+                        tipo de prazer (Squirt).</h2>
+
+                    <div class="question-image">
+                        <img src="images/stats-graph.png" alt="1 em 10 mulheres">
+                    </div>
+
+                    <p class="stats-text" style="font-size: 1rem; margin-top: 20px;">
+                        Mas calma! Existem Técnicas para isso e poucos homens conhecem!
+                    </p>
+
+                    <button class="btn-red pulse" onclick="nextQuestion('stats')" style="margin-top: 10px;">
+                        Continuar
+                    </button>
+                </div>
+            </div>
+
+            <!-- SOCIAL: Prints -->
+            <div class="quiz-screen" id="screen-social">
+                <div class="screen-content">
+                    <h2 class="question-title-red" style="color: #ef4444;">Veja o que outros homens dizem depois de
+                        aplicar essas técnicas secretas 👇</h2>
+                    <span class="subtitle-red">Esses são apenas alguns dos milhares de homens que já aplicaram essas
+                        técnicas!</span>
+
+                    <div class="social-proof-container">
+                        <div class="proof-card">
+                            <img src="images/proof-insta.png" alt="Depoimento 1">
+                        </div>
+                        <div class="proof-card">
+                            <img src="images/proof-whatsapp.png" alt="Depoimento 2">
+                        </div>
+                    </div>
+
+                    <button class="btn-red pulse" onclick="nextQuestion('social')">
+                        QUERO TER ESSES RESULTADOS
+                    </button>
+                </div>
+            </div>
+
+            <!-- BELIEF: Você acredita? -->
+            <div class="quiz-screen" id="screen-belief">
+                <div class="screen-content">
+                    <h2 class="question-title">Você acredita que qualquer mulher pode ter um Squirt se o homem souber as
+                        Técnicas adequadas?</h2>
+
+                    <div class="options-container">
+                        <button class="option-btn-red" onclick="selectOption(this, 'belief')">
+                            Sim, acredito que sim ✅
+                        </button>
+                        <button class="option-btn-red" onclick="selectOption(this, 'belief')">
+                            Não, acho que é algo raro e difícil 🤔
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA DE ANÁLISE -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-analyzing">
+                <div class="screen-content analyzing-content">
+                    <div class="analyzing-animation">
+                        <div class="spinner"></div>
+                    </div>
+                    <h2 class="analyzing-title">Analisando suas respostas...</h2>
+                    <p class="analyzing-subtitle">Preparando seu plano personalizado</p>
+
+                    <div class="analyzing-steps">
+                        <div class="step" id="step-1">
+                            <span class="step-icon">⏳</span>
+                            <span class="step-text">Calculando seu perfil sexual...</span>
+                        </div>
+                        <div class="step" id="step-2">
+                            <span class="step-icon">⏳</span>
+                            <span class="step-text">Identificando pontos de melhoria...</span>
+                        </div>
+                        <div class="step" id="step-3">
+                            <span class="step-icon">⏳</span>
+                            <span class="step-text">Selecionando técnicas especiais para você...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TELA DE RESULTADO -->
+            <!-- ============================================ -->
+            <div class="quiz-screen" id="screen-result">
+                <div class="screen-content result-content">
+                    <div class="result-badge">
+                        <span class="badge-icon">⚠️</span>
+                        <span class="badge-text">IMPORTANTE</span>
+                    </div>
+
+                    <h1 class="result-title">Assista como fiz ela ter <span class="highlight-red">múltiplos
+                            orgasmos</span> em poucos minutos...</h1>
+
+                    <!-- VSL VIDEO CONTAINER (VTurb) -->
+                    <div class="video-container" style="margin: 20px 0; max-width: 100%;">
+                        <vturb-smartplayer id="vid-69761053d186076a68574eb1"
+                            style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>
+                        <script
+                            type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69761053d186076a68574eb1/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
+                    </div>
+
+                    <p style="color: #bbb; font-size: 0.9rem; margin-top: 10px; margin-bottom: 20px;">
+                        🔊 Verifique se o som está ligado
+                    </p>
+
+                    <!-- CONTEÚDO DA OFERTA (OCULTO < 26s) -->
+                    <div id="offer-content" style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
+
+                        <!-- Texto de Vendas -->
+                        <p class="result-text" style="font-size: 1.1rem; margin-bottom: 25px;">
+                            A boa notícia é que você pode mudar isso HOJE. Com essas técnicas, você vai aprender a fazer
+                            qualquer mulher gozar de verdade em poucos minutos.
+                        </p>
+
+                        <!-- Box de Preço Destacado -->
+                        <div class="price-box"
+                            style="background: rgba(220, 38, 38, 0.1); border: 2px solid #dc2626; border-radius: 15px; padding: 25px; margin-bottom: 25px;">
+                            <span class="old-price"
+                                style="display: block; text-decoration: line-through; color: #aaa; font-size: 1rem;">De
+                                R$ 197,00</span>
+                            <span class="new-price"
+                                style="display: block; font-size: 2.5rem; font-weight: 800; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); margin: 5px 0;">R$
+                                69,90</span>
+                            <span class="installments"
+                                style="display: block; color: #fbbf24; font-weight: 600; font-size: 1.1rem;">ou 10x de
+                                R$ 6,90</span>
+                        </div>
+
+                        <!-- Botão CTA -->
+                        <a href="https://seu-link-de-checkout.com" class="btn-red btn-cta pulse" id="ctaButton"
+                            style="width: 100%; display: block; padding: 20px 10px; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;">
+                            SIM! QUERO DOMINAR O SQUIRT 🔥
+                        </a>
+
+                        <div class="guarantee-box"
+                            style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+                            <span class="guarantee-icon" style="font-size: 1.5rem;">🛡️</span>
+                            <span class="guarantee-text" style="color: #ccc;">Garantia de 30 Dias</span>
+                        </div>
+
+                        <div class="urgency-bar">
+                            <span class="urgency-icon">⏰</span>
+                            <span class="urgency-text">Oferta expira em <span id="countdown">14:59</span></span>
+                        </div>
+
+                        <!-- Bônus -->
+                        <div class="bonus-section"
+                            style="margin-top: 40px; text-align: left; background: #1a1a1a; padding: 20px; border-radius: 10px;">
+                            <h3 class="bonus-title" style="color: #fbbf24; text-align: center; margin-bottom: 20px;">🎁
+                                LEVE 3 BÔNUS GRÁTIS</h3>
+                            <div class="bonus-list">
+                                <div class="bonus-item"
+                                    style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                    <span class="bonus-check">✅</span>
+                                    <span class="bonus-name">Bônus 1: Guia do Anal Sem Dor (R$ 47,00)</span>
+                                </div>
+                                <div class="bonus-item"
+                                    style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                    <span class="bonus-check">✅</span>
+                                    <span class="bonus-name">Bônus 2: A Mente Feminina Revelada (R$ 37,00)</span>
+                                </div>
+                                <div class="bonus-item" style="display: flex; align-items: center; gap: 10px;">
+                                    <span class="bonus-check">✅</span>
+                                    <span class="bonus-name">Bônus 3: Mensagens Hipnóticas (R$ 27,00)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="secure-text">🔒 Pagamento 100% seguro e discreto</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

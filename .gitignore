@@ -1,0 +1,14 @@
+# Ignorar arquivos de sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Ignorar logs
+*.log
+
+# Ignorar vídeos muito pesados (acima de 100MB) que bloqueiam o GitHub
+# O vídeo final da VSL (2GB) não deve subir.
+images/vsl-final.mp4
+images/original.mp4
+
+# Se houver outros vídeos crus pesados, adicione aqui
