@@ -90,6 +90,21 @@ function showScreen(screenNumber) {
 
         // TIMER OFERTA ROBUSTO (Para Mobile) - 6 MIN 55 SEG
         if (screenId === 'screen-result') {
+            // INJEÇÃO DINÂMICA DO VSL (Evita áudio vazado no início)
+            const vslPlaceholder = document.getElementById('vsl-placeholder');
+            const vslId = "vid-69761053d186076a68574eb1";
+
+            if (vslPlaceholder && !document.getElementById(vslId)) {
+                console.log("-> RESULTADO: Injetando Player VSL...");
+                vslPlaceholder.innerHTML = `<vturb-smartplayer id="${vslId}" style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>`;
+
+                // Carregar script do player
+                const s = document.createElement("script");
+                s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69761053d186076a68574eb1/v4/player.js";
+                s.async = true;
+                document.head.appendChild(s);
+            }
+
             const offerContent = document.getElementById('offer-content');
             console.log("-> RESULTADO: Iniciando timer robusto (415s / 6m55s)...");
 
