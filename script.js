@@ -3,10 +3,6 @@
    JavaScript - Lógica do Quiz
    ============================================ */
 
-// ============================================
-// CONFIGURAÇÕES EDITÁVEIS
-// ============================================
-
 const CONFIG = {
     // Link do Checkout - EDITAR AQUI
     checkoutUrl: "https://pay.kirvano.com/46a3c7a3-ea65-4e76-8026-e01fa8f55c56",
@@ -92,17 +88,17 @@ function showScreen(screenNumber) {
             if (video) video.play().catch(e => console.log('Autoplay intro blocked'));
         }
 
-        // TIMER OFERTA ROBUSTO (Para Mobile) - 8 MIN 53 SEG
+        // TIMER OFERTA ROBUSTO (Para Mobile) - 6 MIN 55 SEG
         if (screenId === 'screen-result') {
             const offerContent = document.getElementById('offer-content');
-            console.log("-> RESULTADO: Iniciando timer robusto (533s / 8m53s)...");
+            console.log("-> RESULTADO: Iniciando timer robusto (415s / 6m55s)...");
 
             if (offerContent) {
                 offerContent.style.display = 'none';
                 offerContent.style.opacity = '0';
 
-                // Tempo alvo: 535 segundos (8m 55s)
-                const targetDelay = 535 * 1000;
+                // Tempo alvo: 415 segundos (6m 55s)
+                const targetDelay = 415 * 1000;
                 const startTime = Date.now();
 
                 // Sistema de verificação contínua (Previne falha em suspensão mobile)
@@ -162,8 +158,20 @@ function startCountdown() {
     updateCountdown(); countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-function captureUTMParams() { /* ... */ }
-function buildCheckoutUrl() { return CONFIG.checkoutUrl; }
+function captureUTMParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'fbclid'];
+    utmKeys.forEach(key => {
+        const value = urlParams.get(key);
+        if (value) CONFIG.utmParams[key] = value;
+    });
+}
+function buildCheckoutUrl() {
+    let url = CONFIG.checkoutUrl;
+    const params = new URLSearchParams(CONFIG.utmParams);
+    if (params.toString()) url += (url.includes('?') ? '&' : '?') + params.toString();
+    return url;
+}
 function trackEvent(eventName, params = {}) { console.log('Event:', eventName, params); }
 function captureLead() { localStorage.setItem('quizLead', JSON.stringify({ answers: answers, timestamp: new Date() })); }
 
