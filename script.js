@@ -3,15 +3,13 @@
    JavaScript - Lógica do Quiz
    ============================================ */
 
-/* ... (Conteúdo idêntico ao anterior até a função showScreen, atualizado com 533s) ... */
-
 // ============================================
 // CONFIGURAÇÕES EDITÁVEIS
 // ============================================
 
 const CONFIG = {
     // Link do Checkout - EDITAR AQUI
-    checkoutUrl: "https://seu-link-de-checkout.com",
+    checkoutUrl: "https://pay.kirvano.com/46a3c7a3-ea65-4e76-8026-e01fa8f55c56",
 
     // Número total de perguntas
     totalQuestions: 17,
@@ -94,19 +92,34 @@ function showScreen(screenNumber) {
             if (video) video.play().catch(e => console.log('Autoplay intro blocked'));
         }
 
-        // TIMER OFERTA (8 MIN 53 SEG)
-        // Alterado de 3000ms para 533000ms na versão final
+        // TIMER OFERTA ROBUSTO (Para Mobile) - 8 MIN 53 SEG
         if (screenId === 'screen-result') {
             const offerContent = document.getElementById('offer-content');
-            console.log("-> RESULTADO: Timer de oferta iniciado (533s / 8m53s)...");
+            console.log("-> RESULTADO: Iniciando timer robusto (533s / 8m53s)...");
+
             if (offerContent) {
                 offerContent.style.display = 'none';
                 offerContent.style.opacity = '0';
-                setTimeout(() => {
-                    console.log("-> TIMER DISPAROU: Mostrando oferta agora!");
-                    offerContent.style.display = 'block';
-                    setTimeout(() => { offerContent.style.opacity = '1'; }, 100);
-                }, 533 * 1000);
+
+                // Tempo alvo: 533 segundos
+                const targetDelay = 533 * 1000;
+                const startTime = Date.now();
+
+                // Sistema de verificação contínua (Previne falha em suspensão mobile)
+                const timerCheck = setInterval(() => {
+                    const elapsed = Date.now() - startTime;
+
+                    if (elapsed >= targetDelay) {
+                        clearInterval(timerCheck); // Para a verificação
+                        console.log("-> TIMER DISPAROU: Mostrando oferta agora!");
+
+                        offerContent.style.display = 'block';
+                        // Efeito fade-in
+                        setTimeout(() => {
+                            offerContent.style.opacity = '1';
+                        }, 100);
+                    }
+                }, 1000); // Check a cada 1 segundo
             }
         }
     }
