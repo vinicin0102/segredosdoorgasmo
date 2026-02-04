@@ -101,8 +101,8 @@ function showScreen(screenNumber) {
                 offerContent.style.display = 'none';
                 offerContent.style.opacity = '0';
 
-                // Tempo alvo: 533 segundos
-                const targetDelay = 533 * 1000;
+                // Tempo alvo: 535 segundos (8m 55s)
+                const targetDelay = 535 * 1000;
                 const startTime = Date.now();
 
                 // Sistema de verificação contínua (Previne falha em suspensão mobile)
