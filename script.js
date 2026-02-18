@@ -90,19 +90,17 @@ function showScreen(screenNumber) {
 
         // TIMER OFERTA ROBUSTO (Para Mobile) - 6 MIN 55 SEG
         if (screenId === 'screen-result') {
-            // INJEÇÃO DINÂMICA DO VSL (Evita áudio vazado no início)
+            // INJEÇÃO DINÂMICA DO VSL (Local Video)
             const vslPlaceholder = document.getElementById('vsl-placeholder');
-            const vslId = "vid-69761053d186076a68574eb1";
 
-            if (vslPlaceholder && !document.getElementById(vslId)) {
-                console.log("-> RESULTADO: Injetando Player VSL...");
-                vslPlaceholder.innerHTML = `<vturb-smartplayer id="${vslId}" style="display: block; margin: 0 auto; width: 100%; max-width: 100%;"></vturb-smartplayer>`;
-
-                // Carregar script do player
-                const s = document.createElement("script");
-                s.src = "https://scripts.converteai.net/24441899-4a63-4111-ae3a-467e00f4dc2c/players/69761053d186076a68574eb1/v4/player.js";
-                s.async = true;
-                document.head.appendChild(s);
+            if (vslPlaceholder && !vslPlaceholder.querySelector('video')) {
+                console.log("-> RESULTADO: Injetando Player VSL Local...");
+                vslPlaceholder.innerHTML = `
+                    <video id="vsl-video" width="100%" controls autoplay playsinline style="border-radius: 12px; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);">
+                        <source src="images/Ramon Pereira - Sexólogo.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                `;
             }
 
             const offerContent = document.getElementById('offer-content');
@@ -112,8 +110,8 @@ function showScreen(screenNumber) {
                 offerContent.style.display = 'none';
                 offerContent.style.opacity = '0';
 
-                // Tempo alvo: 415 segundos (6m 55s)
-                const targetDelay = 415 * 1000;
+                // Tempo alvo: 470 segundos (7m 50s)
+                const targetDelay = 470 * 1000;
                 const startTime = Date.now();
 
                 // Sistema de verificação contínua (Previne falha em suspensão mobile)
