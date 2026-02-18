@@ -90,16 +90,13 @@ function showScreen(screenNumber) {
 
         // TIMER OFERTA ROBUSTO (Para Mobile) - 6 MIN 55 SEG
         if (screenId === 'screen-result') {
-            // INJEÇÃO DINÂMICA DO VSL (Local Video)
+            // INJEÇÃO DINÂMICA DO VSL (Panda Video)
             const vslPlaceholder = document.getElementById('vsl-placeholder');
 
-            if (vslPlaceholder && !vslPlaceholder.querySelector('video')) {
-                console.log("-> RESULTADO: Injetando Player VSL Local...");
+            if (vslPlaceholder && !vslPlaceholder.querySelector('iframe')) {
+                console.log("-> RESULTADO: Injetando Player Panda Video...");
                 vslPlaceholder.innerHTML = `
-                    <video id="vsl-video" width="100%" controls autoplay playsinline style="border-radius: 12px; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);">
-                        <source src="images/Ramon Pereira - Sexólogo.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos.
-                    </video>
+                    <iframe id="panda-0a85e730-0861-4466-8fae-de23e9713f99" src="https://player-vz-41174eb7-d5d.tv.pandavideo.com.br/embed/?v=0a85e730-0861-4466-8fae-de23e9713f99" style="border:none; width: 100%; aspect-ratio: 16/9; border-radius: 12px; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen=true fetchpriority="high"></iframe>
                 `;
             }
 
